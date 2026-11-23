@@ -32,64 +32,78 @@ ob_start();
             <div class="row g-3">
                 <div class="col-md-3">
                     <label for="pid" class="form-label">Product ID <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="product_num" id="pid" type="text" class="form-control" placeholder="Enter Product ID" value="" required>
+                    <input name="product_num" id="pid" type="text" class="form-control" placeholder="Enter Product ID" value="<?php echo isset($aproduct) ? htmlspecialchars($aproduct['fld_product_num']) : ''; ?>" required>
                 </div>
                 <div class="col-md-3">
                     <label for="name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="product_name" id="name" type="text" class="form-control" placeholder="Enter Product Name" value="" required>
+                    <input name="product_name" id="name" type="text" class="form-control" placeholder="Enter Product Name" value="<?php echo isset($aproduct) ? htmlspecialchars($aproduct['fld_product_name']) : ''; ?>" required>
                 </div>
                 <div class="col-md-3">
                     <label for="price" class="form-label">Price <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="product_price" id="price" type="number" class="form-control" placeholder="Enter Price" value="" required min="0" step="0.01">
+                    <input name="product_price" id="price" type="number" class="form-control" placeholder="Enter Price" value="<?php echo isset($aproduct) ? htmlspecialchars($aproduct['fld_product_price']) : ''; ?>" required min="0" step="0.01">
                 </div>
                 <div class="col-md-3">
                     <label for="brand" class="form-label">Brand <span class="text-danger" aria-hidden="true">*</span></label>
+                    <?php
+                    $brands = ['Cervelo', 'Geometric', 'Tecc', 'Nosh'];
+                    $selectedBrand = isset($aproduct) ? $aproduct['fld_product_brand'] ?? '': '';
+                    ?>
                     <select name="product_brand" id="brand" class="form-select" required>
-                        <option value="">Select Brand</option>
-                        <option value="Cervelo">Cervelo</option>
-                        <option value="Geometric">Geometric</option>
-                        <option value="Tecc">Tecc</option>
-                        <option value="Nosh">Nosh</option>
-                    </select>
+                    <option value="">Select Brand</option>
+                    <?php foreach ($brands as $brand): ?>
+                        <option value="<?= htmlspecialchars($brand) ?>" <?= $selectedBrand === $brand ? 'selected' : '' ?>><?= htmlspecialchars($brand) ?></option>
+                    <?php endforeach; ?>
+                </select>
                 </div>
  
                 <div class="col-md-3">
                     <label for="case_material" class="form-label">Case Material <span class="text-danger" aria-hidden="true">*</span></label>
+                    <?php
+                    $caseMaterials = ['Stainless Steel', 'Titanium', 'Gold-plated'];
+                    $selectedCaseMaterial = isset($aproduct) ? $aproduct['fld_product_case_material'] ?? '': '';
+                    ?>
                     <select name="case_material" id="case_material" class="form-select" required>
                         <option value="">Select Case Material</option>
-                        <option value="Stainless Steel">Stainless Steel</option>
-                        <option value="Titanium">Titanium</option>
-                        <option value="Gold-plated">Gold-plated</option>
+                        <?php foreach ($caseMaterials as $material): ?>
+                            <option value="<?= htmlspecialchars($material) ?>" <?= $selectedCaseMaterial === $material ? 'selected' : '' ?>><?= htmlspecialchars($material) ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     </select>
                 </div>
  
                 <div class="col-md-3">
                     <label for="bands" class="form-label">Watch Bands <span class="text-danger" aria-hidden="true">*</span></label>
+                    <?php
+                    $watchBands = ['Leather Straps', 'Stainless Steel Bracelet', 'Titanium Bracelet', 'Gold-plated Bracelet'];
+                    $selectedWatchBand = isset($aproduct) ? $aproduct['fld_product_watch_bands'] ?? '': '';
+                    ?>
                     <select name="watch_bands" id="bands" class="form-select" required>
                         <option value="">Select Watch Bands</option>
-                        <option value="Leather Straps">Leather Straps</option>
-                        <option value="Stainless Steel Bracelet">Stainless Steel Bracelet</option>
-                        <option value="Titanium Bracelet">Titanium Bracelet</option>
-                        <option value="Gold-plated Bracelet">Gold-plated Bracelet</option>
+                        <?php foreach ($watchBands as $band): ?>
+                            <option value="<?= htmlspecialchars($band) ?>" <?= $selectedWatchBand === $band ? 'selected' : '' ?>><?= htmlspecialchars($band) ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                  
                 <div class="col-md-3">
                     <label for="quantity" class="form-label">Quantity <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="product_quantity" id="quantity" type="number" class="form-control" placeholder="Enter Quantity" value="" required min="0">
+                    <input name="product_quantity" id="quantity" type="number" class="form-control" placeholder="Enter Quantity" value="<?php echo isset($aproduct['fld_product_quantity']) ? htmlspecialchars($aproduct['fld_product_quantity']) : ''; ?>" required min="0">
                 </div>
                 <div class="col-md-3">
                     <label for="product_image" class="form-label">Image</label>
-                    <input name="product_image" id="product_image" type="text" class="form-control" placeholder="Enter image filename" value="">
+                    <input name="product_image" id="product_image" type="text" class="form-control" placeholder="Enter image filename" value="<?php echo isset($aproduct['fld_product_image']) ? htmlspecialchars($aproduct['fld_product_image']) : ''; ?>">
                 </div>
             </div>
              
             <hr class="mt-4 mb-3">
              
             <div>
-                <button type="submit" name="create" class="btn btn-dark">
-                    <i class="bi bi-save me-1"></i>Create
+                <button type="submit" name="<?= isset($aproduct) ? 'update' : 'create' ?>" class="btn btn-dark">
+                    <i class="bi bi-save me-1"></i><?= isset($aproduct) ? 'Update' : 'Create' ?>
                 </button>
+                <?php if (isset($aproduct)): ?>
+                    <input type="hidden" name="original_product_num" value="<?php echo htmlspecialchars($aproduct['fld_product_num']); ?>">
+                <?php endif; ?>
                 <button type="reset" class="btn btn-outline-dark">
                     <i class="bi bi-arrow-counterclockwise me-1"></i>Clear
                 </button>
@@ -136,7 +150,7 @@ ob_start();
                             <td>$<?php echo number_format((float)$product['fld_product_price'], 2); ?></td>
                             <td><?php echo htmlspecialchars($product['fld_product_brand']); ?></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-warning">
+                                <a href="<?= BASE_URL; ?>productcontroller/edit/<?php echo htmlspecialchars($product['fld_product_num']); ?>" class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil"></i>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-info text-white">
