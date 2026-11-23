@@ -31,6 +31,13 @@ class ProductController extends Controller {
             "products" => $this->model->readAll()
         ]);
     }
+
+    public function update() {
+        $data = $_POST;
+        $this->model->update($data);
+        
+        $this->index();
+    }
     
 }
  
