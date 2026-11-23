@@ -34,7 +34,7 @@
               </a>
             </li>
             <li class="nav-item mb-3 mt-2">
-              <a href="staffs.php" class="text-decoration-none text-white">
+              <a href="<?=  BASE_URL ?>staffcontroller" class="text-decoration-none text-white">
                 <i class="bi bi-person-badge me-2"></i>
                 Staffs
               </a>
