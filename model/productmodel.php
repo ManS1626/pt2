@@ -63,6 +63,46 @@ class ProductModel {
         return $row;
     }
 
+    // UPDATE a record
+    public function update($data) {
+        $sql = "UPDATE tbl_products_a218412
+        SET fld_product_num = :new_product_num,
+            fld_product_name = :product_name,
+            fld_product_price = :product_price,
+            fld_product_brand = :product_brand,
+            fld_product_condition = :product_condition,
+            fld_product_year = :product_year,
+            fld_product_quantity = :product_quantity,
+            fld_product_image = :product_image
+        WHERE fld_product_num = :original_product_num";
+    
+        $stmt = $this->db->prepare($sql);
+    
+        $original_product_num = $data['original_product_num'];
+        $new_product_num  = $data['product_num'];
+        $product_name      = $data['product_name'];
+        $product_price     = $data['product_price'];
+        $product_brand     = $data['product_brand'];
+        $product_condition = $data['product_condition'];
+        $product_year      = $data['product_year'];
+        $product_quantity  = $data['product_quantity'];
+        $product_image     = $data['product_image'] ?? '';
+    
+        $stmt->bindValue(':original_product_num', $original_product_num, PDO::PARAM_STR);
+        $stmt->bindValue(':new_product_num',   $new_product_num,   PDO::PARAM_STR);
+        $stmt->bindValue(':product_name',      $product_name,      PDO::PARAM_STR);
+        $stmt->bindValue(':product_price',     $product_price);
+        $stmt->bindValue(':product_brand',     $product_brand,     PDO::PARAM_STR);
+        $stmt->bindValue(':product_condition', $product_condition, PDO::PARAM_STR);
+        $stmt->bindValue(':product_year',      $product_year,      PDO::PARAM_INT);
+        $stmt->bindValue(':product_quantity',  $product_quantity,  PDO::PARAM_INT);
+        $stmt->bindValue(':product_image',     $product_image,     PDO::PARAM_STR);
+    
+        $result = $stmt->execute();
+    
+        return $result;
+    }
+
 }
  
 ?>
