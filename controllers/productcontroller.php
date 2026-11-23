@@ -18,6 +18,19 @@ class ProductController extends Controller {
     
         $this->index();
     }
+
+    public function edit($id) {
+        $aproduct = $this->model->readById($id);
+    
+        if (!$aproduct) {
+            exit;
+        }
+    
+        $this->view("products", [
+            "aproduct" => $aproduct,
+            "products" => $this->model->readAll()
+        ]);
+    }
     
 }
  
