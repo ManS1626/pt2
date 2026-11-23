@@ -9,7 +9,7 @@ class StaffController extends Controller {
  
     public function index() {
         $records = $this->model->readAll();
-        $this->view("staff", ["staff" => $records]);
+        $this->view("staffs", ["staff" => $records]);
     }
 
     public function save() {
@@ -26,7 +26,7 @@ class StaffController extends Controller {
             exit;
         }
     
-        $this->view("staff", [
+        $this->view("staffs", [
             "astaff" => $astaff,
             "staff" => $this->model->readAll()
         ]);
