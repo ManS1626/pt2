@@ -22,7 +22,7 @@
               </a>
             </li>
             <li class="nav-item mb-3 mt-2">
-              <a href="products.php" class="text-decoration-none text-white">
+              <a href="<?=  BASE_URL ?>productcontroller" class="text-decoration-none text-white">
                 <i class="bi bi-pencil-square me-2"></i>
                 Products
               </a>

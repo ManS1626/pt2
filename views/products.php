@@ -110,7 +110,7 @@ ob_start();
                 <small class="text-muted">View and manage all products in the inventory</small>
             </div>
             <div class="col-auto">
-                <span class="badge bg-warning text-dark"><?php echo count($products); ?> items</span>
+                <span class="badge bg-warning text-dark">Total: <?= count($products ?? []) ?> items</span>
             </div>
         </div>
  
