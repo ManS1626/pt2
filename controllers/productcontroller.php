@@ -39,6 +39,16 @@ class ProductController extends Controller {
         $this->index();
     }
     
+    public function delete($id) {
+        $aproduct = $this->model->readById($id);
+        if (!$aproduct) {
+            exit;
+        }
+        
+        $this->model->delete($id);
+        $this->index();
+    }    
+
 }
  
 ?>
