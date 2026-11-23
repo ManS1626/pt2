@@ -28,7 +28,7 @@ ob_start();
          
         <hr>
  
-        <form action="" method="post" class="needs-validation" novalidate>
+        <form action="<?= BASE_URL ?>productcontroller/save" method="post" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-md-3">
                     <label for="pid" class="form-label">Product ID <span class="text-danger" aria-hidden="true">*</span></label>
@@ -110,7 +110,7 @@ ob_start();
                 <small class="text-muted">View and manage all products in the inventory</small>
             </div>
             <div class="col-auto">
-                <span class="badge bg-warning text-dark">Total: 1 items</span>
+                <span class="badge bg-warning text-dark"><?php echo count($products); ?> items</span>
             </div>
         </div>
  
