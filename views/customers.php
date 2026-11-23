@@ -27,7 +27,7 @@ ob_start();
          
         <hr>
  
-        <form action="<?=  BASE_URL ?>customercontroller/<?= isset($acustomer) ? 'update' : 'create' ?>" method="post" class="needs-validation" novalidate>
+        <form action="<?=  BASE_URL ?>customercontroller/<?= isset($acustomer) ? 'update' : 'save' ?>" method="post" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-md-3">
                     <label for="customer_num" class="form-label">Customer ID <span class="text-danger" aria-hidden="true">*</span></label>
@@ -56,8 +56,8 @@ ob_start();
                 </div>
  
                 <div class="col-md-3">
-                    <label for="register_date" class="form-label">Register Date <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="register_date" id="register_date" type="date" class="form-control" placeholder="Select Register Date" value="<?php echo isset($acustomer) ? htmlspecialchars($acustomer['fld_customer_register_date']) : ''; ?>" required>
+                    <label for="customer_register_date" class="form-label">Register Date <span class="text-danger" aria-hidden="true">*</span></label>
+                    <input name="customer_register_date" id="customer_register_date" type="date" class="form-control" placeholder="Select Register Date" value="<?php echo isset($acustomer) ? htmlspecialchars($acustomer['fld_customer_register_date']) : ''; ?>" required>
                 </div>
 
             </div>
