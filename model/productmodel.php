@@ -103,6 +103,15 @@ class ProductModel {
         return $result;
     }
 
+    // DELETE a record
+    public function delete($id) {
+        $sql = "DELETE FROM tbl_products_a218412 WHERE fld_product_num = :product_num";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':product_num', $id, PDO::PARAM_STR);
+        $result = $stmt->execute();
+        return $result;
+    }
+
 }
  
 ?>
