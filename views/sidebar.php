@@ -28,7 +28,7 @@
               </a>
             </li>
             <li class="nav-item mb-3 mt-2">
-              <a href="customers.php" class="text-decoration-none text-white">
+              <a href="<?=  BASE_URL ?>customercontroller" class="text-decoration-none text-white">
                 <i class="bi bi-person-fill me-2"></i>
                 Customers
               </a>
