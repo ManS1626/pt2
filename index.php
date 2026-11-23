@@ -20,7 +20,7 @@ if (!empty($url[0])) {
   $controllerFile = "controllers/$controllerName.php";
 }
 else {
-    require_once 'view/home.php';
+    require_once 'views/home.php';
     exit;
 }
  
