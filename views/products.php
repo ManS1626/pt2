@@ -17,7 +17,7 @@ ob_start();
             <div class="col">
                 <h5 class="mb-0">
                     <i class="bi bi-pencil-square text-warning me-2"></i>
-                    Product Form
+                    <?php echo isset($aproduct) ? 'Edit Product' : 'Product Form'; ?>
                 </h5>
                 <small class="text-muted">Fill in the details of a product</small>
             </div>
@@ -28,7 +28,7 @@ ob_start();
          
         <hr>
  
-        <form action="<?= BASE_URL ?>productcontroller/save" method="post" class="needs-validation" novalidate>
+        <form action="<?= BASE_URL ?>productcontroller/<?= isset($aproduct) ? 'update' : 'save' ?>" method="post" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-md-3">
                     <label for="pid" class="form-label">Product ID <span class="text-danger" aria-hidden="true">*</span></label>
