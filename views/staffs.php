@@ -27,25 +27,25 @@ ob_start();
          
         <hr>
  
-        <form action="" method="post" class="needs-validation" novalidate>
+        <form action="<?= BASE_URL ?>staffcontroller/<?= isset($astaff) ? 'update' : 'save' ?>" method="post" class="needs-validation" novalidate>
             <div class="row g-3">
                 <div class="col-md-3">
                     <label for="staff_num" class="form-label">Staff ID <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="staff_num" id="staff_num" type="text" class="form-control" placeholder="Enter Staff ID" value="" required>
+                    <input name="staff_num" id="staff_num" type="text" class="form-control" placeholder="Enter Staff ID" value="<?php echo isset($astaff['fld_staff_num']) ? htmlspecialchars($astaff['fld_staff_num']) : ''; ?>" required>
                 </div>
                 <div class="col-md-3">
                     <label for="staff_name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="staff_name" id="staff_name" type="text" class="form-control" placeholder="Enter Staff Name" value="" required>
+                    <input name="staff_name" id="staff_name" type="text" class="form-control" placeholder="Enter Staff Name" value="<?php echo isset($astaff['fld_staff_name']) ? htmlspecialchars($astaff['fld_staff_name']) : ''; ?>" required>
                 </div>
     
                 <div class="col-md-3">
                     <label for="staff_phone" class="form-label">Phone <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="staff_phone" id="staff_phone" type="text" class="form-control" placeholder="Enter Phone Number" value="" required>
+                    <input name="staff_phone" id="staff_phone" type="text" class="form-control" placeholder="Enter Phone Number" value="<?php echo isset($astaff['fld_staff_phone']) ? htmlspecialchars($astaff['fld_staff_phone']) : ''; ?>" required>
                 </div>
  
                 <div class="col-md-3">
                     <label for="staff_email" class="form-label">Email Address <span class="text-danger" aria-hidden="true">*</span></label>
-                    <input name="staff_email" id="staff_email" type="email" class="form-control" placeholder="Enter Email Address" value="" required>
+                    <input name="staff_email" id="staff_email" type="email" class="form-control" placeholder="Enter Email Address" value="<?php echo isset($astaff['fld_staff_email']) ? htmlspecialchars($astaff['fld_staff_email']) : ''; ?>" required>
                 </div>
 
             </div>
@@ -53,9 +53,12 @@ ob_start();
             <hr class="mt-4 mb-3">
              
             <div>
-                <button type="submit" name="create" class="btn btn-dark">
-                    <i class="bi bi-save me-1"></i>Create
+                <button type="submit" name="<?= isset($astaff) ? 'update' : 'create' ?>" class="btn btn-dark">
+                    <i class="bi bi-save me-1"></i><?= isset($astaff) ? 'Update' : 'Create' ?>
                 </button>
+                <?php if (isset($astaff)): ?>
+                    <input type="hidden" name="original_staff_num" value="<?php echo htmlspecialchars($astaff['fld_staff_num']); ?>">
+                <?php endif; ?>
                 <button type="reset" class="btn btn-outline-dark">
                     <i class="bi bi-arrow-counterclockwise me-1"></i>Clear
                 </button>
@@ -71,12 +74,12 @@ ob_start();
             <div class="col">
                 <h5 class="mb-0">
                     <i class="bi bi-table text-warning me-2"></i>
-                    Customer List
+                    <?php echo isset($astaff) ? 'Edit Staff' : 'Staff List'; ?>
                 </h5>
-                <small class="text-muted">View and manage all customers</small>
+                <small class="text-muted">View and manage all staff</small>
             </div>
             <div class="col-auto">
-                <span class="badge bg-warning text-dark">Total: 1 items</span>
+                <span class="badge bg-warning text-dark">Total: <?php echo count($staff ?? []); ?> items</span>
             </div>
         </div>
  
@@ -94,23 +97,28 @@ ob_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>S001</td>
-                        <td>Jane Smith</td>
-                        <td>019-8765432</td>
-                        <td>janesmith@example.com</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-warning">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-danger">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php if (!empty($staff)) : ?>
+                        <?php foreach ($staff as $astaff) : ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($astaff['fld_staff_num']); ?></td>
+                                <td><?php echo htmlspecialchars($astaff['fld_staff_name']); ?></td>
+                                <td><?php echo htmlspecialchars($astaff['fld_staff_phone']); ?></td>
+                                <td><?php echo htmlspecialchars($astaff['fld_staff_email']); ?></td>
+                                <td>
+                                    <a href="<?= BASE_URL ?>staffcontroller/edit/<?php echo htmlspecialchars($astaff['fld_staff_num']); ?>" class="btn btn-sm btn-warning">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a href="<?= BASE_URL ?>staffcontroller/delete/<?php echo htmlspecialchars($astaff['fld_staff_num']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete?');">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
                     <tr>
                         <td colspan="6" class="text-center">No staff members found</td>
                     </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
