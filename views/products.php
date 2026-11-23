@@ -156,7 +156,7 @@ ob_start();
                                 <button type="button" class="btn btn-sm btn-info text-white">
                                     <i class="bi bi-image"></i>
                                 </button>
-                                <a href="#" class="btn btn-sm btn-danger">
+                                <a href="<?= BASE_URL; ?>productcontroller/delete/<?= $product['fld_product_num'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete?');">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>
