@@ -53,6 +53,16 @@ class ProductModel {
         return $result;
     }
 
+    // READ a single record by ID
+    public function readById($id) {
+        $sql = "SELECT * FROM tbl_products_a218412 WHERE fld_product_num = :product_num";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':product_num', $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
 }
  
 ?>
