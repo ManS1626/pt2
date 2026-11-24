@@ -58,6 +58,19 @@ class OrderController extends Controller {
         $this->orderModel->delete($id);
         $this->index();
     }
+
+    public function invoice($orderNum = null) {
+        $order = $this->orderModel->readById($orderNum);
+        if (!$order) {
+            exit;
+        }
+ 
+        $this->view("invoice", [
+            "order" => $order,
+            "details" => $this->model("orderdetailmodel")->readByOrder($orderNum)
+        ]);
+    }
+
 }
  
 ?>

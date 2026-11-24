@@ -78,7 +78,7 @@ ob_start();
                                 <td><?= htmlspecialchars($order['fld_customer_name'] ?? $order['fld_customer_num']) ?></td>
                                 <td>
                                     <a href="<?= BASE_URL ?>orderdetailcontroller/index/<?= htmlspecialchars($order['fld_order_num']) ?>" class="btn btn-sm btn-outline-dark" title="Order details"><i class="bi bi-eye"></i></a>
-                                    <a href="invoice.php" class="btn btn-sm btn-outline-dark" title="View invoice"><i class="bi bi-file-earmark-text"></i></a> 
+                                    <a href="<?= BASE_URL ?>ordercontroller/invoice/<?= htmlspecialchars($order['fld_order_num']) ?>" class="btn btn-sm btn-outline-dark" title="View invoice"><i class="bi bi-file-earmark-text"></i></a> 
                                     <a href="<?= BASE_URL ?>ordercontroller/edit/<?= htmlspecialchars($order['fld_order_num']) ?>" class="btn btn-sm btn-outline-dark" title="Edit order"><i class="bi bi-pencil-square"></i></a>
                                     <a href="<?= BASE_URL ?>ordercontroller/delete/<?= htmlspecialchars($order['fld_order_num']) ?>" class="btn btn-sm btn-danger" title="Delete order" onclick="return confirm('Are you sure you want to delete this order?');"><i class="bi bi-trash"></i></a>
                                 </td>
