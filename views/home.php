@@ -6,7 +6,7 @@
                 <!-- Mobile Header with Burger -->
                 <div id="myBurger" class="p-3 d-lg-none text-white bg-dark border-bottom border-warning border-opacity-50">
                     <div class="row">
-                        <a href="#" class="text-white text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#mySidebar">
+                        <a href="<?=  BASE_URL ?>" class="text-white text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#mySidebar">
                             <i class="bi bi-list"></i><h5 class="ms-3 d-inline text-warning text-uppercase fw-light">CÉLESTE</h5>
                         </a>
                     </div>
@@ -32,7 +32,7 @@
                 <p class="lead text-white-50 col-lg-6 mx-auto mb-4">
                     Explore and update CÉLESTE's master collection registry and component specs.
                 </p>
-                <a href="products.php" class="btn btn-outline-warning rounded-0 px-4">View Products</a>
+                <a href="<?=  BASE_URL ?>productcontroller" class="btn btn-outline-warning rounded-0 px-4">View Products</a>
             </div>
         </div>
  
@@ -44,7 +44,7 @@
                 <p class="lead text-white-50 col-lg-6 mx-auto mb-4">
                     Oversee live customer orders, order verification, and dispatch logs across all CÉLESTE models.
                 </p>
-                <a href="orders.php" class="btn btn-outline-warning rounded-0 px-4">Manage Orders</a>
+                <a href="<?=  BASE_URL ?>ordercontroller" class="btn btn-outline-warning rounded-0 px-4">Manage Orders</a>
             </div>
         </div>
  
@@ -56,7 +56,7 @@
                 <p class="lead text-white-50 col-lg-6 mx-auto mb-4">
                     Discover the stories, preferences, and collections of every CÉLESTE watch owner.
                 </p>
-                <a href="customers.php" class="btn btn-outline-warning rounded-0 px-4">View Customers</a>
+                <a href="<?=  BASE_URL ?>customercontroller" class="btn btn-outline-warning rounded-0 px-4">View Customers</a>
             </div>
         </div>
     </div>
@@ -94,7 +94,7 @@
                 <p class="card-text text-muted">Browse and maintain the watch catalogue.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-4">
-                <a href="products.php" class="btn btn-dark rounded-0 px-4">Open</a>
+                <a href="<?=  BASE_URL ?>productcontroller" class="btn btn-dark rounded-0 px-4">Open</a>
             </div>
         </div>
     </div>
@@ -111,7 +111,7 @@
                 <p class="card-text text-muted">View and update customer records.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-4">
-                <a href="customers.php" class="btn btn-dark rounded-0 px-4">Open</a>
+                <a href="<?=  BASE_URL ?>customercontroller" class="btn btn-dark rounded-0 px-4">Open</a>
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
                 <p class="card-text text-muted">Manage the team behind the brand.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-4">
-                <a href="staffs.php" class="btn btn-dark rounded-0 px-4">Open</a>
+                <a href="<?=  BASE_URL ?>staffcontroller" class="btn btn-dark rounded-0 px-4">Open</a>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                 <p class="card-text text-muted">Track and process customer orders.</p>
             </div>
             <div class="card-footer bg-white border-0 pb-4">
-                <a href="orders.php" class="btn btn-dark rounded-0 px-4">Open</a>
+                <a href="<?=  BASE_URL ?>ordercontroller" class="btn btn-dark rounded-0 px-4">Open</a>
             </div>
         </div>
     </div>
