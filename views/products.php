@@ -62,12 +62,11 @@ ob_start();
                     $caseMaterials = ['Stainless Steel', 'Titanium', 'Gold-plated'];
                     $selectedCaseMaterial = isset($aproduct) ? $aproduct['fld_product_case_material'] ?? '': '';
                     ?>
-                    <select name="case_material" id="case_material" class="form-select" required>
+                    <select name="product_case_material" id="case_material" class="form-select" required>
                         <option value="">Select Case Material</option>
                         <?php foreach ($caseMaterials as $material): ?>
                             <option value="<?= htmlspecialchars($material) ?>" <?= $selectedCaseMaterial === $material ? 'selected' : '' ?>><?= htmlspecialchars($material) ?></option>
                         <?php endforeach; ?>
-                    </select>
                     </select>
                 </div>
  
@@ -77,7 +76,7 @@ ob_start();
                     $watchBands = ['Leather Straps', 'Stainless Steel Bracelet', 'Titanium Bracelet', 'Gold-plated Bracelet'];
                     $selectedWatchBand = isset($aproduct) ? $aproduct['fld_product_watch_bands'] ?? '': '';
                     ?>
-                    <select name="watch_bands" id="bands" class="form-select" required>
+                    <select name="product_watch_bands" id="bands" class="form-select" required>
                         <option value="">Select Watch Bands</option>
                         <?php foreach ($watchBands as $band): ?>
                             <option value="<?= htmlspecialchars($band) ?>" <?= $selectedWatchBand === $band ? 'selected' : '' ?>><?= htmlspecialchars($band) ?></option>
